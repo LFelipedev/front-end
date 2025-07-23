@@ -1,0 +1,193 @@
+{
+  "template": [
+    {
+      "TemplateName": "temp1",
+      "cropps": [
+        {
+          "name": "eeee",
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 853
+        },
+        {
+          "name": "aaaa",
+          "x": 123,
+          "y": 123,
+          "width": 927,
+          "height": 617
+        },
+        {
+          "name": "aaaa222",
+          "x": 673,
+          "y": 450,
+          "width": 927,
+          "height": 617
+        },
+        {
+          "name": "aaaa2222233",
+          "x": 82,
+          "y": 327,
+          "width": 927,
+          "height": 617
+        },
+        {
+          "name": "tela cheia",
+          "x": 160,
+          "y": 107,
+          "width": 1281,
+          "height": 854
+        },
+        {
+          "name": "t23",
+          "x": 281,
+          "y": 214,
+          "width": 1280,
+          "height": 853
+        },
+        {
+          "name": "t211",
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 853
+        },
+        {
+          "name": "t2114",
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 853
+        },
+        {
+          "name": "t10op",
+          "x": 160,
+          "y": 919,
+          "width": 1281,
+          "height": 42
+        }
+      ]
+    },
+    {
+      "TemplateName": "temp2",
+      "cropps": [
+        {
+          "name": "t6233",
+          "x": 0,
+          "y": 56,
+          "width": 1280,
+          "height": 102
+        },
+        {
+          "name": "t233",
+          "x": 116,
+          "y": 77,
+          "width": 927,
+          "height": 617
+        },
+        {
+          "name": "t23333",
+          "x": 642,
+          "y": 450,
+          "width": 927,
+          "height": 617
+        }
+      ]
+    },
+    {
+      "TemplateName": "temp22",
+      "cropps": [
+        {
+          "name": "t66",
+          "x": 160,
+          "y": 107,
+          "width": 781,
+          "height": 64
+        },
+        {
+          "name": "t67",
+          "x": 261,
+          "y": 753,
+          "width": 781,
+          "height": 64
+        },
+        {
+          "name": "t2",
+          "x": 160,
+          "y": 107,
+          "width": 1280,
+          "height": 853
+        }
+      ]
+    },
+    {
+      "TemplateName": "teemp24",
+      "cropps": [
+        {
+          "name": "t6212",
+          "x": 63,
+          "y": 453,
+          "width": 1280,
+          "height": 102
+        }
+      ]
+    },
+    {
+      "TemplateName": "teemp243",
+      "cropps": [
+        {
+          "name": "tsss2",
+          "x": 986,
+          "y": 74,
+          "width": 481,
+          "height": 97
+        }
+      ]
+    },
+    {
+      "TemplateName": "teemp1",
+      "cropps": [
+        {
+          "name": "t621211111",
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 102
+        }
+      ]
+    },
+    {
+      "TemplateName": "temp3",
+      "cropps": [
+        {
+          "name": "t1012",
+          "x": 160,
+          "y": 107,
+          "width": 576,
+          "height": 231
+        },
+        {
+          "name": "t1013",
+          "x": 232,
+          "y": 471,
+          "width": 576,
+          "height": 231
+        },
+        {
+          "name": "t4",
+          "x": 0,
+          "y": 956,
+          "width": 1281,
+          "height": 111
+        },
+        {
+          "name": "t55",
+          "x": 9,
+          "y": 586,
+          "width": 1281,
+          "height": 111
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-function button ({text, variant = 'primary', onClick}){
+function Button ({text, variant = 'primary', onClick}){
   return(
     <button className={`btn-true p-1.5 rounded-lg bg-gray-50 cursor-pointer  
       ${variant === 'primary'
@@ -9,4 +9,4 @@ function button ({text, variant = 'primary', onClick}){
   )
 }
 
-export default button;
+export default Button;
