@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 //imports iconsNav
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
@@ -101,7 +102,11 @@ function Sidebar(){
             <br/>
             <ul>
                 {open &&(
-                    <h4 className="text-gray-500 px-3">Configurações</h4>
+                    <div className="">
+                        <Link to="/register">
+                            <h4 className="text-gray-500 px-3">Configurações</h4>
+                        </Link>
+                    </div>
                 )}
                 {!open &&(
                     <h4 className="text-gray-500 px-2">Config</h4>
