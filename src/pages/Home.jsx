@@ -1,6 +1,6 @@
-//import Button from "../components/ui/Button";
+import Button from "../components/ui/Button";
 import Sidebar from "../components/layout/Sidebar";
-import ShowCropp from "../components/layout/ShowCropp";
+
 
 function Home(){
     <>
