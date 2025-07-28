@@ -30,7 +30,7 @@ function Sidebar(){
         },
         {
             icons:<FiFilePlus size={iconSize}/>,
-            to:"",
+            to:"/add",
             label:'Adcionar/criar'
         },
         {
