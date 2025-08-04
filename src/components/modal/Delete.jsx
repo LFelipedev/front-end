@@ -1,23 +1,23 @@
 import React from "react";
 import Button from "../ui/Button";
-import {RiDeleteBin5Fill} from "react-icons/ri";
-import {IoClose} from "react-icons/io5";
+import GenericModal from "../ui/GenericModal";
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
-function Delete({isOpen}) {
+function Delete({ isOpen }) {
 
-    if(isOpen) {
+    if (isOpen) {
+
         return (
             <>
-                <div>
-                    <button className="cursor-pointer"> <IoClose /> </button>
-                    <RiDeleteBin5Fill />
-                    <h2>Tem certeza que deseja excluir esse template?</h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                    <div>
-                        <Button text="Cancelar" variant="secondary"/>
-                        <Button text="Continuar" variant="primary"/>
-                    </div>
-                </div>
+                <GenericModal
+                    icon={<RiDeleteBin5Fill />}
+                    title="Tem certeza que deseja excluir esse template?"
+                    description="Lorem ipsum dolor sit, amet consectetur adipisicing elit."
+                    actions={[
+                        <Button text="Cancelar" variant="secondary" />,
+                        <Button text="Continuar" variant="primary" />
+                    ]}
+                />
             </>
         );
     }

@@ -1,25 +1,25 @@
 import React from "react";
-import Buttom from "../ui/Button";
+import Button from "../ui/Button";
+import GenericModal from "../ui/GenericModal";
 import { BsExclamationCircleFill } from "react-icons/bs";
-import { IoClose } from "react-icons/io5";
 import { FiRotateCw } from "react-icons/fi";
 
-function ErrorCeate() {
+function ErrorCeate({ isOpen }) {
 
     if (isOpen) {
+
         return (
             <>
-                <div>
-                    <button className="cursor-pointer"> <IoClose /> </button>
-                    <BsExclamationCircleFill />
-                    <h2>Falha ao finalizar template</h2>
-                    <p>Seu template não foi finalizado, tente novamente</p>
-                    <div>
-                        <Button icon={ <FiRotateCw /> } text="Tentar novamente" />
-                    </div>
-                </div>X
+                <GenericModal
+                    icon={<BsExclamationCircleFill />}
+                    title="Falha ao finalizar template"
+                    description="Seu template não foi finalizado, tente novamente."
+                    actions={[
+                        <Button icon={<FiRotateCw />} text="Tentar novamente" />
+                    ]}
+                />
             </>
-        )
+        );
     }
 
     return null;
