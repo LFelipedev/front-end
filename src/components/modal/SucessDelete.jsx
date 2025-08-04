@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../ui/Button";
+import GenericModal from "../ui/GenericModal";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import { FiHome } from "react-icons/fi";
@@ -7,19 +8,19 @@ import { FiHome } from "react-icons/fi";
 function SucessDelete({ isOpen }) {
 
     if (isOpen) {
+
         return (
             <>
-                <div>
-                    <button className="cursor-pointer"> <IoClose /> </button>
-                    <BsCheckCircleFill />
-                    <h2>Template excluído com sucesso!</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <div>
-                        <Button icon={ <FiHome /> } text="Voltar ao início" />
-                    </div>
-                </div>
+                <GenericModal
+                    icon={<BsCheckCircleFill />}
+                    title="Template excluído com sucesso!"
+                    description="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+                    actions={[
+                        <Button icon={<FiHome />} text="Voltar ao início" />
+                    ]}
+                />
             </>
-        )
+        );
     }
 
     return null;
