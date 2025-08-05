@@ -59,7 +59,7 @@ function Sidebar(){
     ];
 
     return(
-        <nav className={`shadow-md h-screen bg-black text-white duration-500 ${open? 'w-60':'w-16'}`}>
+        <nav className={`shadow-md h-screen bg-[var(--secondary-color)] text-white duration-500 ${open? 'w-60':'w-16'}`}>
 
             <div className="px-3 py-2 h-10 flex justify-between items-center">
                 {open &&(
