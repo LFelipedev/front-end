@@ -1,19 +1,19 @@
+import React from "react";
 import Button from "../components/ui/Button";
 import Sidebar from "../components/layout/Sidebar";
 
+function Home() {
 
-function Home(){
-    <>
-        <div className="flex">
-            <Sidebar/>
-            <div className="p-4 flex flex-col gap-4">
-               <h1 className="text-xl font-bold">Home</h1>
-
-                {/* Botões visíveis */}
-                <Button variant="secondary" text="Voltar" />
-                <Button text="Avançar" />
+    return (
+        <>
+            <div className="flex">
+                <Sidebar />
+                <div className="p-4 flex flex-col gap-4">
+                    <h1 className="text-xl font-bold">Home</h1>
+                </div>
             </div>
-        </div>
-    </>
+        </>
+    );
+
 }
 export default Home;
