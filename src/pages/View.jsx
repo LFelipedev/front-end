@@ -5,7 +5,7 @@ import ShowCropp from "../components/layout/ShowCropp";
 function View(){
     return(
         <>
-            <div className="flex min-h-screen bg-[#f2f2f2]">
+            <div className="flex min-h-screen bg-gray-100">
                 <Sidebar />
                 <main className="flex-1 p-5 overflow-y-auto">
                     <ShowCropp />

@@ -37,6 +37,13 @@ function Add(){
                 <div className="bg-white rounded-md shadow-lg w-80 mb-2 mt-2 p-4 flex flex-col gap-4">
                     <h1 className="text-xl font-bold">Nome do Template</h1>
                     <div className="bg-cover bg-center w-full h-50" style={{ backgroundImage: `url(${l1img})`}}></div>
+                    <div className="rounded-md shadow-lg mt-auto">
+                        <h3 className="">Valores das Coordenadas</h3>
+                        <p>x: <input type="number" placeholder="default"/></p>
+                        <p>y: <input type="number" placeholder="default"/></p>
+                        <p>width: <input type="number" placeholder="default"/></p>
+                        <p>height: <input type="number" placeholder="default"/></p>
+                    </div>
                 </div>
                 <div className="bg-white rounded-md shadow-md w-100 mb-2 mt-2 p-4 flex flex-col gap-4">
                     <h1 className="text-xl font-bold">Caixa de Seleção</h1>

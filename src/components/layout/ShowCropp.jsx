@@ -52,33 +52,37 @@ function ShowCropp() {
   };
 
   return (
-  <div className="flex flex-col md:flex-row gap-5 p-10 bg-[#ebe8e8] rounded-[60px] shadow-md w-full h-full overflow-auto">
-    <div className="relative flex-shrink-0 w-full md:w-[600px]">
-      <div className="relative w-full h-auto">
-        <img
-          src={l1Img}
-          alt="gabarito"
-          ref={imgRef}
-          className="w-full h-auto rounded-md"
-        />
+  <div className="flex flex-col md:flex-row gap-5 p-10 bg-white rounded-[60px] shadow-md w-full h-full overflow-auto">
+    <div>
+      <div><input type="file" /></div>
+      <div className="relative flex-shrink-0 w-full md:w-[600px]">
+        <div className="relative w-full h-auto">
+          <img
+            src={l1Img}
+            alt="gabarito"
+            ref={imgRef}
+            className="w-full h-auto rounded-md"
+          />
 
-        {croppsData.map((crop) => (
-          <div
-            key={crop.index}
-            className="absolute border-2 border-dashed border-white bg-cyan-300/10"
-            onMouseEnter={() => setHoveredIndex(crop.index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            style={{
-              left: crop.x * crop.scale + "px",
-              top: crop.y * crop.scale + "px",
-              width: crop.width * crop.scale + "px",
-              height: crop.height * crop.scale + "px",
-              display: hiddenCropps[crop.index] ? "none" : "block",
-            }}
-          ></div>
-        ))}
+          {croppsData.map((crop) => (
+            <div
+              key={crop.index}
+              className="absolute border-2 border-dashed border-white bg-cyan-300/10"
+              onMouseEnter={() => setHoveredIndex(crop.index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              style={{
+                left: crop.x * crop.scale + "px",
+                top: crop.y * crop.scale + "px",
+                width: crop.width * crop.scale + "px",
+                height: crop.height * crop.scale + "px",
+                display: hiddenCropps[crop.index] ? "none" : "block",
+              }}
+            ></div>
+          ))}
+        </div>
       </div>
     </div>
+    
 
     <div className="flex-1 overflow-auto max-h-[80vh]">
       {croppsData.map((crop) => (
