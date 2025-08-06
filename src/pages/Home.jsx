@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../components/ui/Button";
 import Sidebar from "../components/layout/Sidebar";
+import TitlePage from "../components/layout/TitlePage";
 
 function Home() {
 
@@ -8,9 +9,7 @@ function Home() {
         <>
             <div className="flex">
                 <Sidebar />
-                <div className="p-4 flex flex-col gap-4">
-                    <h1 className="text-xl font-bold">Home</h1>
-                </div>
+                <TitlePage Title="Home" />
             </div>
         </>
     );
