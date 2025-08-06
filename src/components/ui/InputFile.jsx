@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function InputFile({onFileChange}) {
+export default function InputFile({text, onFileChange}) {
   const [previewUrl, setPreviewUrl] = useState(null);
 
   function handleFileChange(e) {
@@ -15,9 +15,9 @@ export default function InputFile({onFileChange}) {
   }
 
   return (
-    <div className="inputfile-container">
-      <label className="inputfile-label">
-        Escolha uma imagem
+    <div className="flex flex-col w-full h-auto gap-0.5 mb-1">
+      <label className="inputfile-label block bg-[var(--vinho-primario)] text-[var(--primary-color)] text-sm font-normal cursor-pointer">
+        {text}
         <input type="file" accept="image/*" onChange={handleFileChange}  required/>
       </label>
       {previewUrl && (

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import croppsJson from "../../data/Cropps.json";
 import l1Img from "../../assets/l1.jpg";
+import InputFile from "../ui/InputFile";
 
 function ShowCropp() {
   const [croppsData, setCroppsData] = useState([]);
@@ -54,7 +55,7 @@ function ShowCropp() {
   return (
   <div className="flex flex-col md:flex-row gap-5 p-10 bg-white rounded-[60px] shadow-md w-full h-full overflow-auto">
     <div>
-      <div><input type="file" /></div>
+      <div className=" rounded-md shadow-lg w-full h-10 mb-5"><InputFile text="Escolha uma imagem"/></div>
       <div className="relative flex-shrink-0 w-full md:w-[600px]">
         <div className="relative w-full h-auto">
           <img
