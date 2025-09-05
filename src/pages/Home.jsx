@@ -1,5 +1,3 @@
-import React from "react";
-import Button from "../components/ui/Button";
 import Sidebar from "../components/layout/Sidebar";
 import TitlePage from "../components/layout/TitlePage";
 
