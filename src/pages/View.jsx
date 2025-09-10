@@ -7,7 +7,6 @@ function View(){
     return(
         <>
             <div className="flex min-h-screen bg-gray-100">
-                <Sidebar />
                 <main className="flex-1 p-5 overflow-y-auto">
                     <div>
                         <TitlePage Title="Criar template" />

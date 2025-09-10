@@ -2,7 +2,6 @@
 import { useState } from "react";
 //import components
 import Button from "../components/ui/Button";
-import Sidebar from "../components/layout/Sidebar";
 import TitlePage from "../components/layout/TitlePage";
 
 //import images
@@ -16,7 +15,7 @@ import { TbEdit } from "react-icons/tb";
 import { BiEditAlt } from "react-icons/bi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 
-function Add() {
+function Create() {
     const iconSize = 20;
     const [openMenuList, setOpenMenuList] = useState(true);
 
@@ -35,7 +34,6 @@ function Add() {
         <>
 
             <div className="flex bg-gray-100">
-                <Sidebar />
                 <div className="w-full h-full">
                     <div>
                         <TitlePage Title="Criar template" />
@@ -99,4 +97,4 @@ function Add() {
         </>
     );
 }
-export default Add;
+export default Create;

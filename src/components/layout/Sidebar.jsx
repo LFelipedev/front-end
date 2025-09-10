@@ -31,7 +31,7 @@ function Sidebar(){
         },
         {
             icons:<FiFilePlus size={iconSize}/>,
-            to:"/add",
+            to:"/Criar",
             label:'Adcionar/criar'
         },
         {
@@ -59,7 +59,7 @@ function Sidebar(){
     ];
 
     return(
-        <nav className={`shadow-md bg-[var(--secondary-color)] text-white duration-500 ${open? 'w-60':'w-16'}`}>
+        <nav className={`shadow-md bg-[var(--secondary-color)] text-white duration-500 ${open? 'w-[15%]':'w-[5%]'}`}>
 
             <div className="px-3 py-2 h-10 flex justify-between items-center">
                 {open &&(
