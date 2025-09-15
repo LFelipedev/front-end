@@ -6,7 +6,7 @@ function Home() {
 
     return (
         <>
-            <NewCropp/>
+            <h1>Home</h1>
         </>
     );
 
