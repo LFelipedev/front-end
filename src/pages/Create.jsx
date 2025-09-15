@@ -20,28 +20,85 @@ import { FaArrowLeft } from "react-icons/fa";
 function Create() {
     const iconSize = 20;
     const [openMenuList, setOpenMenuList] = useState(true);
-    const [mostrarSelecao, setMostrarSelecao] = useState(false);
+    const [step, setStep] = useState(1);
+    const [nome, setNome] = useState("");
+    const [descricao, setDescricao] = useState("");
+
+    const handleAvancar = () => {
+        console.log("Nome:", nome);
+        console.log("Descrição:", descricao);
+    };
 
     const AddList = [
         { label: 'Título 1' },
         { label: 'Título 2' },
         { label: 'Título 3' },
-        { label: 'Título 4' }];
+        { label: 'Título 4' }
+    ];
 
     const MenuList = [
         { icons: <TbEdit size={iconSize} />, label: 'Editar' },
         { icons: <RiDeleteBin5Fill size={iconSize} />, label: 'Excluir' },
-        { icons: <BiEditAlt size={iconSize} />, label: 'Renomear' }];
+        { icons: <BiEditAlt size={iconSize} />, label: 'Renomear' }
+    ];
+
+    const nextStep = () => setStep((prev) => prev + 1);
+    const prevStep = () => setStep((prev) => prev - 1);
+    
 
     return (
         <>
-             {!mostrarSelecao && (
+            {step === 1 && (
+                <div className="flex flex-col w-full h-full bg-gray-100">
+                    <div className="ml-5 w-full">
+                        <div className="flex">
+                            <TitlePage Title="Criar template" />
+                        </div>
+                    </div>
+                    <div className="flex w-full bg-gray-100 p-6">
+                        <div className="bg-white align-top w-full p-6 rounded-lg shadow-md relative">
+                            <h2 className="text-lg font-semibold mb-1">Novo Template</h2>
+                            <p className="text-gray-500 text-sm mb-6">
+                                Lorem Ipsum... descrição do que é o template
+                            </p>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-1">
+                                    Nome do Template
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder='Ex: "Título"'
+                                    value={nome}
+                                    onChange={(e) => setNome(e.target.value)}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-1">Descrição</label>
+                                <input
+                                    type="text"
+                                    placeholder='Ex: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."'
+                                    value={descricao}
+                                    onChange={(e) => setDescricao(e.target.value)}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
+                                />
+                            </div>
+
+                            <div className="flex justify-end">
+                                <Button text="Adicionar"
+                                        onClick={nextStep}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>)}
+            {step === 2 && (
                 <>
                     <div className="flex w-full h-full bg-gray-100">
-                        <div className="w-full h-full">
+                        <div className="w-full">
                             <div className="flex">
                                 <FaArrowLeft className="mr-3 mt-3 cursor-pointer" size={30}
-                                onClick={() => setMostrarSelecao(prev => !prev)}
+                                onClick={prevStep}
                                 />
                                 <TitlePage Title="Criar template" />
                             </div>
@@ -49,7 +106,7 @@ function Create() {
                                 <Upload />
                                 <div className="ml-165">
                                     <Button text="Adicionar"
-                                            onClick={() => setMostrarSelecao(prev => !prev)}
+                                            onClick={nextStep}
                                     />
                                 </div>
                             </div>
@@ -57,18 +114,18 @@ function Create() {
                     </div>
                 </>
             )}
-            {mostrarSelecao && (
+            {step === 3 && (
                 <div className="flex w-full bg-gray-100">
-                    <div className="w-full h-full">
+                    <div className="w-full">
                         <div className="flex">
                              <FaArrowLeft className="mr-3 mt-3 cursor-pointer" size={30}
-                                onClick={() => setMostrarSelecao(prev => !prev)}
+                                onClick={prevStep}
                             />
                             <TitlePage Title="Criar template" />
                         </div>
                         <br/>
-                        <div className="flex gap-x-5">
-                            <div className="bg-white rounded-md shadow-lg w-96 mb-2 mt-2 p-4 flex flex-col gap-4">
+                        <div className="flex gap-4 p-4 h-fit">
+                            <div className="ml-5 bg-white rounded-md shadow-lg w-96 mb-2 mt-2 p-4 flex flex-col gap-4 flex-1">
                                 <h1 className="text-xl font-bold">Nome do Template</h1>
                                 <div className="bg-cover bg-center w-full h-50" style={{ backgroundImage: `url(${l1img})` }}></div>
                                 <div className="rounded-md shadow-lg mt-auto">
@@ -79,7 +136,7 @@ function Create() {
                                     <p>height: <input type="number" placeholder="default" /></p>
                                 </div>
                             </div>
-                            <div className="bg-white rounded-md shadow-md w-100 mb-2 mt-2 p-4 flex flex-col gap-4">
+                            <div className="bg-white rounded-md shadow-md w-100 mb-2 mt-2 p-4 flex flex-col gap-4 flex-1">
                                 <h1 className="text-xl font-bold">Caixa de Seleção</h1>
                                 <ul>
                                     {AddList.map((item, index) => {
