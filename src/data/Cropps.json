@@ -4,13 +4,6 @@
       "TemplateName": "temp1",
       "cropps": [
         {
-          "name": "eeee",
-          "x": 0,
-          "y": 0,
-          "width": 1280,
-          "height": 853
-        },
-        {
           "name": "aaaa",
           "x": 123,
           "y": 123,
@@ -65,13 +58,6 @@
           "y": 919,
           "width": 1281,
           "height": 42
-        },
-        {
-          "name": "t11op",
-          "x": 120,
-          "y": 909,
-          "width": 1200,
-          "height": 422
         }
       ]
     },

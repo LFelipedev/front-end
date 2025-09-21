@@ -59,7 +59,7 @@ function Sidebar(){
     ];
 
     return(
-        <nav className={` shadow-md bg-[var(--secondary-color)] text-white duration-500 ${open? 'w-[15vw]':'w-[5vw]'}`}>
+        <nav className={`shadow-md bg-[var(--secondary-color)] text-white duration-500 ${open? 'w-[15%]':'w-[5%]'}`}>
 
             <div className="px-3 py-2 h-10 flex justify-between items-center">
                 {open &&(
@@ -94,7 +94,7 @@ function Sidebar(){
                 )}
                 {MenuTemplates.map((item,index)=>{
                     return(
-                        <li key={index} className="px-3 py-2 hover:bg-rose-500/25 duration-300 cursor-pointer">
+                        <li key={index} className="px-3 py-2 hover:bg-rose-500/25 rounded-md duration-300 cursor-pointer">
                             <Link to={item.to} className="flex items-center gap-2">
                                 <div>{item.icons}</div>
                                 <p className={`${!open && 'w-0 translate-x-24'} duration-500 overflow-hidden`}>{item.label}</p>
