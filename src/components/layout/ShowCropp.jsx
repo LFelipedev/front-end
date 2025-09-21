@@ -139,8 +139,8 @@ function ShowCropp() {
                     baixar os templates */}
                     <Upload />
                     <div className="flex justify-center fp-4 gap-4">
-                      <Button text="Voltar" onClick={()=> setOpen(!open)}/>
-                      <Button text="Baixar"/>
+                      <Button text="Voltar" variant="" onClick={()=> setOpen(!open)}/>
+                      <Button text="Baixar" variant="primary"/>
                     </div>
                 </div>
             </div>
