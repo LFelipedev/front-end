@@ -48,7 +48,7 @@ function Sidebar(){
     const MenuConfig =[
         {
             icons:<FiUser size={iconSize}/>,
-            to:"/login",
+            to:"/",
             label:'Usuario'
         },
         {

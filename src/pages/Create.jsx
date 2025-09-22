@@ -162,7 +162,7 @@ function Create() {
                                         
                                     </div>
                                     <CreateModal isOpen={showModal} isClose={() => setShowModal(false)}/>
-                                    <Delete isOpen={showModalDelete}/>
+                                    <Delete isOpen={showModalDelete} isClose={() => setShowModalDelete(false)}/>
                                     {!openMenuList && (
                                         <div className="bg-white rounded-lg shadow-lg w-40 h-40  mb-2 mt-2 p-4 flex flex-col gap-4">
                                             <ul>
