@@ -4,6 +4,8 @@ import { useState } from "react";
 import Button from "../components/ui/Button";
 import Upload from "../components/ui/Upload";
 import TitlePage from "../components/layout/TitlePage";
+import CreateModal from "../components/modal/CreateModal";
+import Delete from "../components/modal/Delete";
 
 //import images
 import l1img from "../assets/l1.jpg"
@@ -16,7 +18,6 @@ import { TbEdit } from "react-icons/tb";
 import { BiEditAlt } from "react-icons/bi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FaArrowLeft } from "react-icons/fa";
-import CreateModal from "../components/modal/CreateModal";
 
 function Create() {
     const iconSize = 20;
@@ -25,6 +26,7 @@ function Create() {
     const [nome, setNome] = useState("");
     const [descricao, setDescricao] = useState("");
     const [showModal, setShowModal] = useState(false);
+    const [showModalDelete, setShowModalDelete] = useState(false);
 
     const handleAvancar = () => {
         console.log("Nome:", nome);
@@ -40,7 +42,8 @@ function Create() {
 
     const MenuList = [
         { icons: <TbEdit size={iconSize} />, label: 'Editar' },
-        { icons: <RiDeleteBin5Fill size={iconSize} />, label: 'Excluir' },
+        { icons: <RiDeleteBin5Fill size={iconSize} />, 
+        label: <button className="cursor-pointer" onClick={()=>setShowModalDelete(!showModalDelete)}>Excluir</button> },
         { icons: <BiEditAlt size={iconSize} />, label: 'Renomear' }
     ];
 
@@ -156,8 +159,10 @@ function Create() {
                                             <Button icon={<CiCirclePlus size={20} />} text="Adicionar Campo" />
                                             <Button text="Avancar" variant="" onClick={()=>setShowModal(!showModal)}></Button>
                                         </div>
-                                        <CreateModal isOpen={showModal}/>
+                                        
                                     </div>
+                                    <CreateModal isOpen={showModal}/>
+                                    <Delete isOpen={showModalDelete}/>
                                     {!openMenuList && (
                                         <div className="bg-white rounded-lg shadow-lg w-40 h-40  mb-2 mt-2 p-4 flex flex-col gap-4">
                                             <ul>
