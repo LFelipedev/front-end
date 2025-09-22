@@ -4,7 +4,7 @@ import Button from "../ui/Button.jsx";
 import { FiHome } from "react-icons/fi";
 import { BsPlusLg, BsCheckCircleFill } from "react-icons/bs";
 
-function Create({ isOpen }) {
+function CreateModal({ isOpen }) {
 
   if (isOpen) {
 
@@ -24,4 +24,4 @@ function Create({ isOpen }) {
   }
 }
 
-export default Create;
+export default CreateModal;
