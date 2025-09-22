@@ -4,6 +4,7 @@ import l1Img from "../../assets/l1.jpg";
 import InputFile from "../ui/InputFile";
 import Button from "../ui/Button";
 import Upload from "../ui/Upload";
+import ExportBox from "./ExportBox";
 
 function ShowCropp() {
   const [croppsData, setCroppsData] = useState([]);
@@ -132,20 +133,17 @@ function ShowCropp() {
     )}
     {!open &&(
       <>
-        <div className="flex w-screen h-screen bg-gray-100">
-            <div className="w-screen">
-                <div className="mt-20 flex flex-col gap-y-5">
-                    {/*O Upload e um exemplo de tela para o fluxo, deve ser substituida pela tela para
-                    baixar os templates */}
-                    <Upload />
-                    <div className="flex justify-center fp-4 gap-4">
+      <div className="flex w-screen h-screen justify-center bg-gray-100">
+          <div className="">
+              <div className="">
+                  <ExportBox/>
+                  <div className="flex justify-center p-4 gap-4">
                       <Button text="Voltar" variant="" onClick={()=> setOpen(!open)}/>
                       <Button text="Baixar" variant="primary"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
+                  </div>
+              </div>
+          </div>
+      </div>
       </>
     )}
   </div>
