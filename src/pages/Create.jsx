@@ -6,9 +6,7 @@ import Upload from "../components/ui/Upload";
 import TitlePage from "../components/layout/TitlePage";
 import CreateModal from "../components/modal/CreateModal";
 import Delete from "../components/modal/DeleteModal";
-
-//import images
-import l1img from "../assets/l1.jpg"
+import CreateBox from "../components/layout/CreateBox";
 
 //import icons
 import { CiCirclePlus } from "react-icons/ci";
@@ -128,17 +126,7 @@ function Create() {
                             </div>
                             <div className="w-full">
                                 <div className="flex gap-4 p-4 h-fit">
-                                    <div className="ml-5 bg-white rounded-md shadow-lg w-96 mb-2 mt-2 p-4 flex flex-col gap-4 flex-1">
-                                        <h1 className="text-xl font-bold">Nome do Template</h1>
-                                        <div className="bg-cover bg-center w-full h-50" style={{ backgroundImage: `url(${uploadedImage || l1img})` }}></div>
-                                        <div className="rounded-md shadow-lg mt-auto">
-                                            <h3 className="">Valores das Coordenadas</h3>
-                                            <p>x: <input type="number" placeholder="default" /></p>
-                                            <p>y: <input type="number" placeholder="default" /></p>
-                                            <p>width: <input type="number" placeholder="default" /></p>
-                                            <p>height: <input type="number" placeholder="default" /></p>
-                                        </div>
-                                    </div>
+                                    <CreateBox/>
                                     <div className="bg-white rounded-md shadow-md w-100 mb-2 mt-2 p-4 flex flex-col gap-4 flex-1">
                                         <h1 className="text-xl font-bold">Caixa de Seleção</h1>
                                         <ul>
