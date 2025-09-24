@@ -5,6 +5,7 @@ import InputFile from "../ui/InputFile";
 import Button from "../ui/Button";
 import Upload from "../ui/Upload";
 import ExportBox from "./ExportBox";
+import { useLocation } from "react-router-dom";
 
 function ShowCropp() {
   const [croppsData, setCroppsData] = useState([]);
@@ -12,6 +13,8 @@ function ShowCropp() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const[open, setOpen] = useState(true);
+  const location = useLocation();
+  const { template } = location.state || {};
 
   const imgRef = useRef(null);
 
@@ -29,7 +32,7 @@ function ShowCropp() {
         const hiddenInit = {};
 
         croppsJson.template.forEach((item, templateIndex) => {
-          if (item.TemplateName !== "temp1") return;
+          if (item.TemplateName !== template?.name) return;
 
           item.cropps.forEach((crop, cropIndex) => {
             const index = `${templateIndex}-${cropIndex}`;
@@ -75,8 +78,8 @@ function ShowCropp() {
           <div className="relative flex-shrink-0 w-full md:w-[600px]">
             <div className="relative w-fit ml-2 mr-2 h-auto">
               <img
-                src={previewUrl || l1Img}
-                alt="gabarito"
+                src={previewUrl || (template?.img || l1Img)}
+                alt={template?.name || "gabarito"}
                 ref={imgRef}
                 className="w-full h-auto rounded-md"
               />

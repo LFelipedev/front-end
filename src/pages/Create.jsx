@@ -27,6 +27,7 @@ function Create() {
     const [descricao, setDescricao] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [showModalDelete, setShowModalDelete] = useState(false);
+    const [uploadedImage, setUploadedImage] = useState(null);
 
     const handleAvancar = () => {
         console.log("Nome:", nome);
@@ -107,7 +108,7 @@ function Create() {
                                 </div>
                                 <div className="w-full">
                                     <div className="mt-20 flex flex-col gap-y-5">
-                                        <Upload />
+                                        <Upload onFileChange={(file) => setUploadedImage(URL.createObjectURL(file))}/>
                                         <div className="ml-165">
                                             <Button text="Adicionar"
                                                 onClick={nextStep}
@@ -129,7 +130,7 @@ function Create() {
                                 <div className="flex gap-4 p-4 h-fit">
                                     <div className="ml-5 bg-white rounded-md shadow-lg w-96 mb-2 mt-2 p-4 flex flex-col gap-4 flex-1">
                                         <h1 className="text-xl font-bold">Nome do Template</h1>
-                                        <div className="bg-cover bg-center w-full h-50" style={{ backgroundImage: `url(${l1img})` }}></div>
+                                        <div className="bg-cover bg-center w-full h-50" style={{ backgroundImage: `url(${uploadedImage || l1img})` }}></div>
                                         <div className="rounded-md shadow-lg mt-auto">
                                             <h3 className="">Valores das Coordenadas</h3>
                                             <p>x: <input type="number" placeholder="default" /></p>
