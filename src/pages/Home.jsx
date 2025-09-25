@@ -12,6 +12,7 @@ import l4Img from "../assets/l4.jpg";
 import l5Img from "../assets/l5.jpg";
 import l6Img from "../assets/l6.jpg";
 import l7Img from "../assets/sl1.jpg";
+import l8Img from "../assets/sl2.jpg"
 
 function Home() {
 
@@ -22,7 +23,8 @@ function Home() {
         { id: 4, name: "Template 4", img: l4Img },
         { id: 5, name: "Template 5", img: l5Img },
         { id: 6, name: "Template 6", img: l6Img },
-        { id: 7, name: "Template 7", img: l7Img }
+        { id: 7, name: "Template 7", img: l7Img },
+        { id: 8, name: "Template 8", img: l8Img }
         ];
 
     return (
