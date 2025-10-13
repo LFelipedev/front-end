@@ -29,6 +29,12 @@ function Create() {
     const [showModal, setShowModal] = useState(false);
     const [showModalDelete, setShowModalDelete] = useState(false);
     const [uploadedImage, setUploadedImage] = useState(null);
+    const [coordinates, setCoordinates] = useState({
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0
+    });
 
     const handleAvancar = () => {
         console.log("Nome:", nome);
@@ -120,10 +126,10 @@ function Create() {
                         <div className="w-full h-full">
                             <div className="flex flex-row justify-between mx-15">
                                 <div className="w-[60%]">
-                                    <CreateBox />
-                                </div>   
+                                    <CreateBox onCropChange={setCoordinates} coordinates={coordinates} />
+                                </div>
                                 <div className="w-[35%] flex flex-col gap-5">
-                                    <CoordinateBox />
+                                    <CoordinateBox coordinates={coordinates} onChange={setCoordinates} />
                                     <SelectBox />
                                 </div>
 

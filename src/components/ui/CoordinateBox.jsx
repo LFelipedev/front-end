@@ -1,7 +1,16 @@
 import React from "react"
 import { BsArrowsExpand } from "react-icons/bs";
 
-function CoordinateBox() {
+function CoordinateBox({coordinates, onChange}) {
+    const { x = 0, y = 0, width = 0, height = 0 } = coordinates || {};
+
+    const handleChange = (e, field) => {
+        const value = e.target.value;
+        onChange({
+            ...coordinates,
+            [field]: value ? parseInt(value, 10) : 0,
+        });
+    };
 
     return (
         <>
@@ -12,14 +21,14 @@ function CoordinateBox() {
                         <div className="flex flex-row gap-2 justify-between items-center">
                             <p className="uppercase">x:</p>
                             <div className="flex flex-row justify-center items-center w-20 px-3 py-0.75 border-2 border-gray-300 rounded-lg">
-                                <input type="number" placeholder="px" className="w-[70%] text-center"/>
+                                <input type="number" value={x} onChange={(e) => handleChange(e, "x")} placeholder="px" className="w-[70%] text-center"/>
                                 <BsArrowsExpand className="text-gray-500"/>
                             </div>
                         </div>
                         <div className="flex flex-row gap-2 justify-between items-center">
                             <p className="uppercase">y:</p>
                             <div className="flex flex-row justify-center items-center w-20 px-3 py-0.75 border-2 border-gray-300 rounded-lg">
-                                <input type="number" placeholder="px" className="w-[70%] text-center"/>
+                                <input type="number" value={y} onChange={(e) => handleChange(e, "y")} placeholder="px" className="w-[70%] text-center"/>
                                 <BsArrowsExpand className="text-gray-500"/>
                             </div>
                         </div>
@@ -28,14 +37,14 @@ function CoordinateBox() {
                         <div className="flex flex-row gap-2 justify-between items-center">
                             <p>Largura:</p>
                             <div className="flex flex-row justify-center items-center w-20 px-3 py-0.75 border-2 border-gray-300 rounded-lg">
-                                <input type="number" placeholder="px" className="w-[70%] text-center"/>
+                                <input type="number" value={width}  onChange={(e) => handleChange(e, "width")} placeholder="px" className="w-[70%] text-center"/>
                                 <BsArrowsExpand className="text-gray-500"/>
                             </div>
                         </div>
                         <div className="flex flex-row gap-2 justify-between items-center">
                             <p>Altura:</p>
                             <div className="flex flex-row justify-center items-center w-20 px-3 py-0.75 border-2 border-gray-300 rounded-lg">
-                                <input type="number" placeholder="px" className="w-[70%] text-center"/>
+                                <input type="number" value={height} onChange={(e) => handleChange(e, "height")} placeholder="px" className="w-[70%] text-center"/>
                                 <BsArrowsExpand className="text-gray-500"/>
                             </div>
                         </div>
