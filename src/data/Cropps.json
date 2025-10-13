@@ -5,6 +5,7 @@
       "cropps": [
         {
           "name": "aaaa",
+          "descrição": "imagine uma descrição",
           "x": 123,
           "y": 123,
           "width": 927,
@@ -12,6 +13,7 @@
         },
         {
           "name": "aaaa222",
+          "descrição": "imagine uma descrição",
           "x": 673,
           "y": 450,
           "width": 927,
@@ -19,6 +21,7 @@
         },
         {
           "name": "aaaa2222233",
+          "descrição": "imagine uma descrição",
           "x": 82,
           "y": 327,
           "width": 927,
@@ -26,6 +29,7 @@
         },
         {
           "name": "tela cheia",
+          "descrição": "imagine uma descrição",
           "x": 160,
           "y": 107,
           "width": 1281,
@@ -33,6 +37,7 @@
         },
         {
           "name": "t23",
+          "descrição": "imagine uma descrição",
           "x": 281,
           "y": 214,
           "width": 1280,
@@ -40,6 +45,7 @@
         },
         {
           "name": "t211",
+          "descrição": "imagine uma descrição",
           "x": 0,
           "y": 0,
           "width": 1280,
@@ -47,6 +53,7 @@
         },
         {
           "name": "t2114",
+          "descrição": "imagine uma descrição",
           "x": 0,
           "y": 0,
           "width": 1280,
@@ -54,6 +61,7 @@
         },
         {
           "name": "t10op",
+          "descrição": "imagine uma descrição",
           "x": 160,
           "y": 919,
           "width": 1281,

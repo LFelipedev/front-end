@@ -136,6 +136,7 @@ function Create() {
                                         openMenuList={openMenuList}
                                         setOpenMenuList={setOpenMenuList}
                                         prevStep={prevStep}
+                                        setStep={setStep}
                                         showModal={showModal}
                                         setShowModal={setShowModal} />
                                 </div>

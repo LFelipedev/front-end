@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { CiMenuKebab } from "react-icons/ci";
-import { PiTagSimple } from "react-icons/pi"; // importe o ícone aqui
-import Button from "./Button"; // ajuste o caminho se necessário
+import { PiTagSimple } from "react-icons/pi";
+import Button from "./Button";
+
+//import modal
+import CreateModal from "../modal/CreateModal";
 
 function SelectBox({
     openMenuList,
     setOpenMenuList,
     prevStep,
+    setStep,
     showModal,
     setShowModal,
     allCoordinates = []
@@ -40,7 +44,10 @@ function SelectBox({
                 <Button text="Voltar" variant="secondary" onClick={prevStep} />
                 <Button text="Avançar" variant="primary" onClick={() => setShowModal(!showModal)} />
             </div>
-
+            <CreateModal isOpen={showModal}
+                isClose={() => setShowModal(false)}
+                setStep={setStep} />
+                
         </div>
 
     );
