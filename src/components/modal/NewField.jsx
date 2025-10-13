@@ -1,8 +1,26 @@
 import Button from "../ui/Button";
 import React from "react"
 import { IoClose } from "react-icons/io5";
+import { useState } from "react";
 
-function NewField({ isOpen, isClose }) {
+function NewField({ isOpen, isClose, onSave, currentCoordinates }) {
+    const [fieldName, setFieldName] = useState("");
+
+    const handleSave = () => {
+        if (!fieldName.trim()) return;
+
+        const fieldData = {
+            label: fieldName.trim(),
+            ...currentCoordinates
+        };
+
+        onSave(fieldData);
+        setFieldName("");
+        isClose();
+    };
+
+    if (!isOpen) return null;
+
 
     if (isOpen) {
         return (
@@ -19,7 +37,12 @@ function NewField({ isOpen, isClose }) {
                                     </button>
                                 </div>
                             </div>
-                            <p className="text-[#344054]">Aqui pode aparecer uma prévia das coordenadas</p>
+                            <p className="text-[#344054]">
+                                Prévia das coordenadas:
+                                <span className="ml-2 text-sm text-gray-600">
+                                    x: {currentCoordinates?.x}, y: {currentCoordinates?.y}, w: {currentCoordinates?.width}, h: {currentCoordinates?.height}
+                                </span>
+                            </p>
                         </div>
 
                         <div className="flex flex-col gap-2">
@@ -27,8 +50,8 @@ function NewField({ isOpen, isClose }) {
                                 <p className="font-medium text-[#344054]">Nome da Caixa de Seleção</p>
                             </div>
                             <div className="flex flex-row justify-between">
-                                <input type="text" placeholder='Ex: "Título"' className="w-[90%] p-1.5 border-2 border-gray-300 rounded-lg" />
-                                <Button text="Salvar" />
+                                <input type="text" placeholder='Ex: "Título"'  onChange={(e) => setFieldName(e.target.value)} className="w-[90%] p-1.5 border-2 border-gray-300 rounded-lg" />
+                                <Button text="Salvar" onClick={handleSave} disabled={!fieldName.trim()}/>
                             </div>
                         </div>
                     </div>

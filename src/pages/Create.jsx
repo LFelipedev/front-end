@@ -29,17 +29,17 @@ function Create() {
     const [showModal, setShowModal] = useState(false);
     const [showModalDelete, setShowModalDelete] = useState(false);
     const [uploadedImage, setUploadedImage] = useState(null);
+    const [allCoordinates, setAllCoordinates] = useState([]);
     const [coordinates, setCoordinates] = useState({
         x: 0,
         y: 0,
         width: 0,
         height: 0
     });
-
-    const handleAvancar = () => {
-        console.log("Nome:", nome);
-        console.log("Descrição:", descricao);
+    const handleSaveField = (fieldData) => {
+        setAllCoordinates((prev) => [...prev, fieldData]);
     };
+    
 
     const AddList = [
         { label: 'Título 1' },
@@ -126,11 +126,18 @@ function Create() {
                         <div className="w-full h-full">
                             <div className="flex flex-row justify-between mx-15">
                                 <div className="w-[60%]">
-                                    <CreateBox onCropChange={setCoordinates} coordinates={coordinates} />
+                                    <CreateBox onCropChange={setCoordinates}
+                                        coordinates={coordinates}
+                                        onSaveField={handleSaveField} />
                                 </div>
                                 <div className="w-[35%] flex flex-col gap-5">
                                     <CoordinateBox coordinates={coordinates} onChange={setCoordinates} />
-                                    <SelectBox />
+                                    <SelectBox allCoordinates={allCoordinates}
+                                        openMenuList={openMenuList}
+                                        setOpenMenuList={setOpenMenuList}
+                                        prevStep={prevStep}
+                                        showModal={showModal}
+                                        setShowModal={setShowModal} />
                                 </div>
 
                             </div>
