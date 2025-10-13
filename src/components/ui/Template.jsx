@@ -13,7 +13,7 @@ function Template() {
                     <p className="text-sm">
                         Descrição do template:  Relatório de controle qualitativo de concreto asfáltico com gráfico de curva granulométrica
                     </p>
-                    <Link>
+                    <Link to="/enviar">
                         <p className="uppercase text-[var(--vinho-secundario)] font-medium underline">ir para template</p>
                     </Link>
                 </div>
