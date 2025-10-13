@@ -6,6 +6,7 @@ import Register from "../pages/Cad.jsx";
 import Create from "../pages/Create.jsx";
 import ImgCropper from "../components/ui/ImgCropper.jsx";
 import NewField from "../components/modal/NewField.jsx";
+import UploadDocument from "../pages/UploadDocument.jsx";
 
 function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ function AppRoutes() {
       <Route path="/register" element={<Register />} />
       <Route path="/croppr" element={<ImgCropper />} />
       <Route path="/modal" element={<NewField isOpen={true} />} />
+      <Route path="/enviar" element={<UploadDocument />} />
     </Routes>
   );
 }
