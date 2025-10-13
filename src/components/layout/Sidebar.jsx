@@ -32,7 +32,7 @@ function Sidebar(){
         {
             icons:<FiFilePlus size={iconSize}/>,
             to:"/Criar",
-            label:'Adcionar/criar'
+            label:'Adicionar/Criar'
         },
         {
             icons:<LuFilePen size={iconSize}/>,

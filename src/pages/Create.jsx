@@ -6,7 +6,8 @@ import Upload from "../components/ui/Upload";
 import TitlePage from "../components/layout/TitlePage";
 import CreateModal from "../components/modal/CreateModal";
 import Delete from "../components/modal/DeleteModal";
-import CreateBox from "../components/layout/CreateBox";
+import CreateBox from "../components/ui/CreateBox";
+import SelectBox from "../components/ui/SelectBox";
 
 //import icons
 import { CiCirclePlus } from "react-icons/ci";
@@ -16,6 +17,8 @@ import { TbEdit } from "react-icons/tb";
 import { BiEditAlt } from "react-icons/bi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FaArrowLeft } from "react-icons/fa";
+import CoordinateBox from "../components/ui/CoordinateBox";
+import { PiTagSimple } from "react-icons/pi";
 
 function Create() {
     const iconSize = 20;
@@ -41,8 +44,10 @@ function Create() {
 
     const MenuList = [
         { icons: <TbEdit size={iconSize} />, label: 'Editar' },
-        { icons: <RiDeleteBin5Fill size={iconSize} />, 
-        label: <button className="cursor-pointer" onClick={()=>setShowModalDelete(!showModalDelete)}>Excluir</button> },
+        {
+            icons: <RiDeleteBin5Fill size={iconSize} />,
+            label: <button className="cursor-pointer" onClick={() => setShowModalDelete(!showModalDelete)}>Excluir</button>
+        },
         { icons: <BiEditAlt size={iconSize} />, label: 'Renomear' }
     ];
 
@@ -62,114 +67,66 @@ function Create() {
                     {step === 1 && (
                         <div className="flex flex-col mx-auto w-[90%] h-full">
                             <div className="bg-white align-top w-full p-6 rounded-lg shadow-md relative">
-                            <h2 className="text-lg font-semibold mb-1">Novo Template</h2>
-                            <p className="text-gray-500 text-sm mb-6">
-                                Lorem Ipsum... descrição do que é o template
-                            </p>
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">
-                                    Nome do Template
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder='Ex: "Título"'
-                                    value={nome}
-                                    onChange={(e) => setNome(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">Descrição</label>
-                                <input
-                                    type="text"
-                                    placeholder='Ex: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."'
-                                    value={descricao}
-                                    onChange={(e) => setDescricao(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
-                                />
-                            </div>
+                                <h2 className="text-lg font-semibold mb-1">Novo Template</h2>
+                                <p className="text-gray-500 text-sm mb-6">
+                                    Lorem Ipsum... descrição do que é o template
+                                </p>
+                                <div className="mb-4">
+                                    <label className="block text-sm font-medium mb-1">
+                                        Nome do Template
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder='Ex: "Título"'
+                                        value={nome}
+                                        onChange={(e) => setNome(e.target.value)}
+                                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
+                                    />
+                                </div>
+                                <div className="mb-4">
+                                    <label className="block text-sm font-medium mb-1">Descrição</label>
+                                    <input
+                                        type="text"
+                                        placeholder='Ex: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."'
+                                        value={descricao}
+                                        onChange={(e) => setDescricao(e.target.value)}
+                                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
+                                    />
+                                </div>
 
-                            <div className=" flex justify-end mt-4">
-                                <Button text="Adicionar"
+                                <div className=" flex justify-end mt-4">
+                                    <Button text="Adicionar"
                                         onClick={nextStep}
-                                />
+                                    />
+                                </div>
                             </div>
-                        </div>
                         </div>)}
                     {step === 2 && (
                         <>
                             <div className="flex flex-col w-full h-full bg-gray-100">
                                 <div className="w-full">
                                     <div className="flex flex-col gap-y-5">
-                                        <Upload onFileChange={(file) => setUploadedImage(URL.createObjectURL(file))}/>
-                                        <div className="flex justify-end mr-[5%]">
-                                            <Button text="Adicionar "
-                                                onClick={nextStep}
-                                            />
+                                        <Upload onFileChange={(file) => setUploadedImage(URL.createObjectURL(file))} />
+                                        <div className="flex justify-between px-[5%]">
+                                            <Button text="Voltar" variant="secondary" onClick={prevStep} />
+                                            <Button text="Adicionar" onClick={nextStep} />
                                         </div>
                                     </div>
-                                </div>
-                                  <div className="flex justify-end">
-                                    <FaArrowLeft className="mr-3 mt-3 cursor-pointer" size={30}
-                                    onClick={prevStep}
-                                    />
                                 </div>
                             </div>
                         </>
                     )}
                     {step === 3 && (
-                        <div className="flex w-full bg-gray-100">
-                            <div className="flex">
-                                <FaArrowLeft className="mr-3 mt-3 cursor-pointer" size={30}
-                                onClick={prevStep}
-                                />
-                            </div>
-                            <div className="w-full">
-                                <div className="flex gap-4 p-4 h-fit">
-                                    <CreateBox/>
-                                    <div className="bg-white rounded-md shadow-md w-100 mb-2 mt-2 p-4 flex flex-col gap-4 flex-1">
-                                        <h1 className="text-xl font-bold">Caixa de Seleção</h1>
-                                        <ul>
-                                            {AddList.map((item, index) => {
-                                                return (
-                                                    <li key={index} className="px-3 py-2 rounded-md duration-300 cursor-pointer">
-                                                        <div className="flex items-center gap-2">
-                                                            <PiBookmarkSimple size={iconSize} />
-                                                            <p>{item.label}</p>
-                                                            <CiMenuKebab size={iconSize} className="ml-auto" onClick={() => setOpenMenuList(!openMenuList)} />
-                                                        </div>
-                                                    </li>
-                                                );
-                                            })
-
-                                            }
-                                        </ul>
-                                        <div className="mt-auto ml-auto flex gap-x-1">
-                                            <Button icon={<CiCirclePlus size={20} />} text="Adicionar Campo" />
-                                            <Button text="Avancar" variant="" onClick={()=>setShowModal(!showModal)}></Button>
-                                        </div>
-                                        
-                                    </div>
-                                    <CreateModal isOpen={showModal} isClose={() => setShowModal(false)}/>
-                                    <Delete isOpen={showModalDelete} isClose={() => setShowModalDelete(false)}/>
-                                    {!openMenuList && (
-                                        <div className="bg-white rounded-lg shadow-lg w-40 h-40  mb-2 mt-2 p-4 flex flex-col gap-4">
-                                            <ul>
-                                                {MenuList.map((item, index) => {
-                                                    return (
-                                                        <li key={index} className="px-3 py-2 rounded-md duration-300 cursor-pointer">
-                                                            <div className="flex items-center gap-2">
-                                                                <div>{item.icons}</div>
-                                                                <p>{item.label}</p>
-                                                            </div>
-                                                        </li>
-                                                    )
-                                                })
-                                                }
-                                            </ul>
-                                        </div>
-                                    )}
+                        <div className="w-full h-full">
+                            <div className="flex flex-row justify-between mx-15">
+                                <div className="w-[60%]">
+                                    <CreateBox />
+                                </div>   
+                                <div className="w-[35%] flex flex-col gap-5">
+                                    <CoordinateBox />
+                                    <SelectBox />
                                 </div>
+
                             </div>
                         </div>
                     )}

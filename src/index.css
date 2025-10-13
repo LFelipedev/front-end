@@ -8,6 +8,22 @@
     background-color: #F3F4F6
 }
 
-html, body {
-  overflow-x: hidden;
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input {
+  -moz-appearance: textfield; /* remove em Firefox */
+  appearance: textfield; /* remove em outros navegadores */
+
+  outline: none; /* remove o contorno azul padrão */
+}
+
+/* Remove efeitos visuais ao focar */
+input:focus {
+  outline: none;
+  box-shadow: none;
+  
 }
