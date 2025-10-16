@@ -56,14 +56,14 @@ function SelectBox({
                     Ainda não há nenhuma caixa de seleção salva para esse documento.
                 </p>
             ) : (
-                <ul className="w-full mt-2 space-y-2">
+                <ul className="w-full flex flex-col items-center justify-between gap-2.5">
                     {allCoordinates.map((coord, index) => (
-                        <li key={index} className="bg-gray-100 px-3 py-2 rounded-md flex items-center gap-2">
-                            <PiTagSimple size={18} />
-                            <div className="text-sm">
-                                <p><strong>nome: {coord.label}</strong></p>
-                                <p className="text-gray-600 text-xs">x: {coord.x}, y: {coord.y}, w: {coord.width}, h: {coord.height}</p>
+                        <li key={index} className=" w-[80%] flex flex-row items-center justify-between">
+                            <div className="flex flex-row items-center gap-5">
+                                <PiTagSimple size={20} />
+                                <p className="text-lg">{coord.label}</p>
                             </div>
+
                             <CiMenuKebab
                                 size={18}
                                 className="ml-auto cursor-pointer"
