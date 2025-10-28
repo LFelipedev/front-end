@@ -88,6 +88,7 @@ function Create() {
                                         onChange={(e) => setNome(e.target.value)}
                                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
                                     />
+                                    {!nome.trim() && (<span className="text-red-800 text-xs pl-1">é necessário preencher o nome</span>)}
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-sm font-medium mb-1">Descrição</label>
@@ -98,6 +99,7 @@ function Create() {
                                         onChange={(e) => setDescricao(e.target.value)}
                                         className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
                                     />
+                                    {!descricao.trim() && (<span className="text-red-800 text-xs pl-1">é necessário preencher a descrição</span>)}
                                 </div>
 
                                 <div className=" flex justify-end mt-4">
@@ -112,8 +114,9 @@ function Create() {
                         <>
                             <div className="flex flex-col w-full h-full bg-gray-100">
                                 <div className="w-full">
-                                    <div className="flex flex-col gap-y-5">
+                                    <div className="flex flex-col gap-y-1">
                                         <Upload onFileChange={(file) => setUploadedImage(URL.createObjectURL(file))} />
+                                            {!uploadedImage &&(<span className="text-red-800 text-xs pl-14">é necessário inserir uma imagem</span>)}
                                         <div className="flex justify-between px-[5%]">
                                             <Button
                                                 text="Voltar" variant="secondary" onClick={prevStep}
@@ -133,7 +136,7 @@ function Create() {
                             <div className="flex flex-row justify-between mx-15">
                                 <div className="w-[60%]">
                                     <CreateBox
-                                        name_template={nome} 
+                                        name_template={nome}
                                         onCropChange={setCoordinates}
                                         coordinates={coordinates}
                                         onSaveField={handleSaveField}
