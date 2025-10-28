@@ -50,18 +50,15 @@ function UploadDocument() {
                     <div className="h-[40%]">
                         <Upload onFileChange={setSelectedImage} />
                     </div>
-
-                    {selectedImage && selectedImage.url && selectedImage.file?.type.startsWith("image/") && (
-                        <div>
-                            <ViewFields
-                                imageUrl={selectedImage.url}
-                                template={template}
-                                selectedFields={selectedFields}
-                                hoveredFieldId={hoveredFieldId}
-                                setHoveredFieldId={setHoveredFieldId}
-                            />
-                        </div>
-                    )}
+                    <div className="">
+                        <ViewFields
+                            imageUrl={selectedImage}
+                            template={template}
+                            selectedFields={selectedFields}
+                            hoveredFieldId={hoveredFieldId}
+                            setHoveredFieldId={setHoveredFieldId}
+                        />
+                    </div>
                 </div>
 
                 <div className="w-full lg:w-1/2 h-auto">
@@ -69,7 +66,7 @@ function UploadDocument() {
                         templateId={template.id}
                         selectedFields={selectedFields}
                         setSelectedFields={setSelectedFields}
-                        hoveredFieldId={hoveredFieldId}
+                        hoveredFieldId={hoveredFieldId} 
                     />
                 </div>
             </div>
