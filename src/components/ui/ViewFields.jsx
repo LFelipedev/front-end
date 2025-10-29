@@ -5,8 +5,7 @@ function ViewFields({
   imageUrl,
   template,
   selectedFields = [],
-  hoveredFieldId,
-  setHoveredFieldId,
+  setHoveredFieldId
 }) {
   const imgRef = useRef(null);
   const wrapperRef = useRef(null);

@@ -16,11 +16,11 @@ function Upload({ onFileChange }) {
 
     const handleFileChange = (event) => {
         const files = Array.from(event.target.files);
-        const validTypes = ['image/png', 'image/jpeg', 'application/pdf'];
+        const validTypes = ['image/png', 'image/jpeg'];
         const validFiles = files.filter(file => validTypes.includes(file.type));
 
         if (validFiles.length !== files.length) {
-            message.warning('Apenas PNG, JPG e PDF são permitidos.');
+            message.warning('Apenas PNG e JPG são permitidos.');
         }
 
         const file = validFiles[0];
@@ -42,6 +42,7 @@ function Upload({ onFileChange }) {
         setFileName(null);
         setFileUrl(null);
         setUploadBig(true);
+
         if (onFileChange) onFileChange(null);
     };
 
@@ -66,12 +67,12 @@ function Upload({ onFileChange }) {
                             <p className="mt-2">
                                 <span className="text-indigo-800 font-bold">Clique em Upload</span> ou arraste e solte um arquivo
                             </p>
-                            <p className="text-sm text-gray-500">PNG, PDF ou JPG</p>
+                            <p className="text-sm text-gray-500">PNG ou JPG</p>
 
                             <input
                                 id="pdf-upload"
                                 type="file"
-                                accept="image/png, image/jpeg, application/pdf"
+                                accept="image/png, image/jpeg"
                                 onChange={handleFileChange}
                                 className="hidden"
                                 multiple

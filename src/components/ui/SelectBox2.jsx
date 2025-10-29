@@ -3,11 +3,8 @@ import { CiMenuKebab } from "react-icons/ci";
 import { PiTagSimple } from "react-icons/pi";
 import Button from "./Button";
 import axios from "axios";
-import CreateModal from "../modal/CreateModal";
 
 function SelectBox2({
-    openMenuList,
-    setOpenMenuList,
     prevStep,
     templateId,
     selectedFields,
@@ -59,7 +56,7 @@ function SelectBox2({
                     {template.fields.map((field) => (
                         <li
                             key={field.id}
-                            className={`w-[80%] flex flex-row items-center justify-between p-2 rounded ${hoveredFieldId === field.id ? "bg-cyan-100 font-bold" : ""
+                            className={`w-[80%] flex flex-row items-center justify-between p-2 rounded ${hoveredFieldId === field.id ? "text-red-500 font-bold" : ""
                                 }`}
                         >
                             <div key={field.id} className="flex flex-row items-center gap-5">
@@ -72,13 +69,12 @@ function SelectBox2({
                                 />
                                 {field.name}
                             </div>
-                            <p className="text-gray-400 text-sm">
-                                ({field.x}, {field.y}) - {field.width}x{field.height}
+                            <p className="text-gray-400 text-sm pl-2">
+                                x: {field.x} y: {field.y} w: {field.width} h: {field.height}
                             </p>
                             <CiMenuKebab
                                 size={18}
                                 className="ml-auto cursor-pointer"
-                                /*onClick={() => setOpenMenuList(!openMenuList)}*/
                             />
                         </li>
                     ))}

@@ -48,16 +48,18 @@ function UploadDocument() {
             <div className="flex flex-col lg:flex-row w-full h-full p-6 lg:p-10 gap-6">
                 <div className="flex flex-col w-full lg:w-1/2 h-auto lg:h-full justify-between gap-6">
                     <div className="h-[40%]">
-                        <Upload onFileChange={setSelectedImage} />
+                        <Upload onFileChange={(file) => { file ? setSelectedImage(URL.createObjectURL(file)) : setSelectedImage(null) }} />
                     </div>
                     <div className="">
-                        <ViewFields
-                            imageUrl={selectedImage}
-                            template={template}
-                            selectedFields={selectedFields}
-                            hoveredFieldId={hoveredFieldId}
-                            setHoveredFieldId={setHoveredFieldId}
-                        />
+                        {selectedImage && (<>
+                            <ViewFields
+                                imageUrl={selectedImage}
+                                template={template}
+                                selectedFields={selectedFields}
+                                hoveredFieldId={hoveredFieldId}
+                                setHoveredFieldId={setHoveredFieldId}
+                            />
+                        </>)}
                     </div>
                 </div>
 
@@ -66,7 +68,7 @@ function UploadDocument() {
                         templateId={template.id}
                         selectedFields={selectedFields}
                         setSelectedFields={setSelectedFields}
-                        hoveredFieldId={hoveredFieldId} 
+                        hoveredFieldId={hoveredFieldId}
                     />
                 </div>
             </div>

@@ -8,7 +8,6 @@ import axios from 'axios';
 
 //import modal
 import CreateModal from "../modal/CreateModal";
-import { Descriptions } from "antd";
 
 function SelectBox({
     openMenuList,
@@ -19,7 +18,8 @@ function SelectBox({
     setShowModal,
     allCoordinates = [],
     templateName,
-    templateDescription
+    templateDescription,
+    resetForm
 }) {
     const saveCoordinates = async () => {
         try {
@@ -43,6 +43,8 @@ function SelectBox({
 
             const response = await axios.post('http://localhost:3000/templates', templatePayload);
             console.log("Dados salvos com sucesso:", response.data);
+
+            setShowModal(true);
         } catch (error) {
             console.error("Erro ao salvar os dados:", error.response ? error.response.data : error.message);
         }
@@ -79,7 +81,9 @@ function SelectBox({
             </div>
             <CreateModal isOpen={showModal}
                 isClose={() => setShowModal(false)}
-                setStep={setStep} />
+                setStep={setStep}
+                resetForm={resetForm}
+            />
 
         </div>
 

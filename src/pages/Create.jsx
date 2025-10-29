@@ -1,33 +1,23 @@
 //import functions of react
 import { useState } from "react";
+
 //import components
 import Button from "../components/ui/Button";
 import Upload from "../components/ui/Upload";
 import TitlePage from "../components/layout/TitlePage";
 import CreateModal from "../components/modal/CreateModal";
-import Delete from "../components/modal/DeleteModal";
 import CreateBox from "../components/ui/CreateBox";
 import SelectBox from "../components/ui/SelectBox";
 
 //import icons
-import { CiCirclePlus } from "react-icons/ci";
-import { PiBookmarkSimple } from "react-icons/pi";
-import { CiMenuKebab } from "react-icons/ci";
-import { TbEdit } from "react-icons/tb";
-import { BiEditAlt } from "react-icons/bi";
-import { RiDeleteBin5Fill } from "react-icons/ri";
-import { FaArrowLeft } from "react-icons/fa";
 import CoordinateBox from "../components/ui/CoordinateBox";
-import { PiTagSimple } from "react-icons/pi";
 
 function Create() {
-    const iconSize = 20;
     const [openMenuList, setOpenMenuList] = useState(true);
     const [step, setStep] = useState(1);
-    const [nome, setNome] = useState("");
-    const [descricao, setDescricao] = useState("");
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
     const [showModal, setShowModal] = useState(false);
-    const [showModalDelete, setShowModalDelete] = useState(false);
     const [uploadedImage, setUploadedImage] = useState(null);
     const [allCoordinates, setAllCoordinates] = useState([]);
     const [coordinates, setCoordinates] = useState({
@@ -36,26 +26,27 @@ function Create() {
         width: 0,
         height: 0
     });
+    const [touched, setTouched] = useState({
+        name: false,
+        description: false,
+        image: false,
+    });
+    const handleBlur = (field) => {
+        setTouched((prev) => ({ ...prev, [field]: true }));
+    };
+
     const handleSaveField = (fieldData) => {
         setAllCoordinates((prev) => [...prev, fieldData]);
     };
 
-
-    const AddList = [
-        { label: 'Título 1' },
-        { label: 'Título 2' },
-        { label: 'Título 3' },
-        { label: 'Título 4' }
-    ];
-
-    const MenuList = [
-        { icons: <TbEdit size={iconSize} />, label: 'Editar' },
-        {
-            icons: <RiDeleteBin5Fill size={iconSize} />,
-            label: <button className="cursor-pointer" onClick={() => setShowModalDelete(!showModalDelete)}>Excluir</button>
-        },
-        { icons: <BiEditAlt size={iconSize} />, label: 'Renomear' }
-    ];
+    const resetForm = () => {
+        setName("");
+        setDescription("");
+        setUploadedImage(null);
+        setAllCoordinates([]);
+        setCoordinates({ x: 0, y: 0, width: 0, height: 0 });
+        setStep(1);
+    };
 
     const nextStep = () => setStep((prev) => prev + 1);
     const prevStep = () => setStep((prev) => prev - 1);
@@ -84,28 +75,40 @@ function Create() {
                                     <input
                                         type="text"
                                         placeholder='Ex: "Título"'
-                                        value={nome}
-                                        onChange={(e) => setNome(e.target.value)}
-                                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        onBlur={() => handleBlur("name")}
+                                        className={`w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200 
+                                        ${touched.name && !name.trim() ? "border-red-800" : "border-gray-300"}`}
                                     />
-                                    {!nome.trim() && (<span className="text-red-800 text-xs pl-1">é necessário preencher o nome</span>)}
+                                    {touched.name && !name.trim() && (
+                                        <span className="text-red-800 text-xs pl-1">
+                                            É necessário preencher o nome
+                                        </span>
+                                    )}
                                 </div>
                                 <div className="mb-4">
                                     <label className="block text-sm font-medium mb-1">Descrição</label>
                                     <input
                                         type="text"
                                         placeholder='Ex: "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."'
-                                        value={descricao}
-                                        onChange={(e) => setDescricao(e.target.value)}
-                                        className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200"
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                        onBlur={() => handleBlur("description")}
+                                        className={`w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-200 
+                                        ${touched.description && !description.trim() ? "border-red-800" : "border-gray-300"}`}
                                     />
-                                    {!descricao.trim() && (<span className="text-red-800 text-xs pl-1">é necessário preencher a descrição</span>)}
+                                    {touched.description && !description.trim() && (
+                                        <span className="text-red-800 text-xs pl-1">
+                                            É necessário preencher a descrição
+                                        </span>
+                                    )}
                                 </div>
 
                                 <div className=" flex justify-end mt-4">
                                     <Button text="Adicionar"
                                         onClick={nextStep}
-                                        disabled={!nome.trim() || !descricao.trim()}
+                                        disabled={!name.trim() || !description.trim()}
                                     />
                                 </div>
                             </div>
@@ -116,7 +119,6 @@ function Create() {
                                 <div className="w-full">
                                     <div className="flex flex-col gap-y-1">
                                         <Upload onFileChange={(file) => setUploadedImage(URL.createObjectURL(file))} />
-                                            {!uploadedImage &&(<span className="text-red-800 text-xs pl-14">é necessário inserir uma imagem</span>)}
                                         <div className="flex justify-between px-[5%]">
                                             <Button
                                                 text="Voltar" variant="secondary" onClick={prevStep}
@@ -136,7 +138,7 @@ function Create() {
                             <div className="flex flex-row justify-between mx-15">
                                 <div className="w-[60%]">
                                     <CreateBox
-                                        name_template={nome}
+                                        name_template={name}
                                         onCropChange={setCoordinates}
                                         coordinates={coordinates}
                                         onSaveField={handleSaveField}
@@ -152,8 +154,9 @@ function Create() {
                                         setStep={setStep}
                                         showModal={showModal}
                                         setShowModal={setShowModal}
-                                        templateName={nome}
-                                        templateDescription={descricao}
+                                        templateName={name}
+                                        templateDescription={description}
+                                        resetForm={resetForm}
                                     />
 
                                 </div>

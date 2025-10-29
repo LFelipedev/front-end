@@ -6,12 +6,7 @@ function GenericModal({ icon, title, description, actions, onClose }) {
     return (
         <>
             <div className="fixed inset-0 m-auto flex flex-col bg-[#F8F9FA] w-[90vw] max-w-[715px] h-[80vh] max-h-[355px] overflow-hidden gap-3 px-4 pt-4 pb-8 rounded-3xl shadow-md">
-                <div className="flex justify-end ">
-                    <button className="cursor-pointer" onClick={onClose}>
-                        <IoClose className="text-[24px]" />
-                    </button>
-                </div>
-                <div className="flex mx-20 flex-col items-center gap-5">
+                <div className="flex mx-20 flex-col items-center gap-5 pt-8">
                     <div className="flex flex-col items-center">
                         {icon && <div className="text-[150px] text-[var(--vinho-primario)]">{icon}</div>}
                         <h2 className="text-[24px] text-[#344054] font-bold">{title}</h2>
