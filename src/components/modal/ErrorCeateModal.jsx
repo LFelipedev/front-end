@@ -17,7 +17,6 @@ function ErrorCeate({ isOpen, isClose, setStep }) {
                     actions={[
                         <Button icon={<FiRotateCw />} text="Tentar novamente"
                         onClick={() => {
-                            setStep(1);
                             isClose();
                         }} />
                     ]}

@@ -3,12 +3,13 @@ import TitlePage from "../components/layout/TitlePage";
 import Template from "../components/ui/Template";
 import CreateTemplate from "../components/ui/CreateTemplate";
 import DeleteModal from "../components/modal/DeleteModal";
-import SucessDeleteModal from "../components/modal/SucessDeleteModal"
+import SucessDeleteModal from "../components/modal/SucessDeleteModal";
+import ErrorDeleteModal from "../components/modal/ErrorDeleteModal";
 import { deleteTemplate } from "../services/api";
 
 function ViewTemplates() {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+    const [modalType, setModalType] = useState(null);
     const [selectedTemplate, setSelectedTemplate] = useState(null);
 
     const handleOpenModal = (template) => {
@@ -23,14 +24,15 @@ function ViewTemplates() {
             await deleteTemplate(selectedTemplate.id);
 
             window.dispatchEvent(new CustomEvent("templateDeleted", { detail: selectedTemplate.id }));
-
+            
             setIsModalOpen(false);
             setSelectedTemplate(null);
-
-            setIsSuccessModalOpen(true);
+            setModalType("success");
         } catch (error) {
             console.error("Erro ao deletar template:", error);
-            alert("Erro ao deletar template. Tente novamente.");
+
+            setModalType("error");
+            setIsModalOpen(false);
         }
     };
     return (
@@ -51,10 +53,18 @@ function ViewTemplates() {
                 template={selectedTemplate}
                 onConfirm={handleConfirmDelete}
             />
-            <SucessDeleteModal
-                isOpen={isSuccessModalOpen}
-                isClose={() => setIsSuccessModalOpen(false)}
-            />
+            {modalType === "success" && (
+                <SucessDeleteModal
+                    isOpen={true}
+                    isClose={() => setModalType(null)}
+                />
+            )}
+            {modalType === "error" && (
+                <ErrorDeleteModal
+                    isOpen={true}
+                    isClose={() => setModalType(null)}
+                />
+            )}
         </div>
     );
 }

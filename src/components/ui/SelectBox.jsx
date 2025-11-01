@@ -28,8 +28,6 @@ function SelectBox({
     const saveCoordinates = async () => {
         try {
             if (!allCoordinates.length) return;
-            console.log(templateName);
-            console.log(templateDescription);
 
             const templatePayload = {
                 name: templateName || "Template sem nome",
