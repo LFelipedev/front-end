@@ -119,8 +119,20 @@ function Create() {
                                 <div className="w-full">
                                     <div className="flex flex-col gap-y-1">
                                         <Upload onFileChange={(file) => {
-                                            setUploadedImage(file);                 // salva o File real
-                                            setPreviewImage(URL.createObjectURL(file)); // cria a URL só para exibir
+                                            if (!file) {
+                                                setUploadedImage(null);
+                                                setPreviewImage(null);
+                                                return;
+                                            }
+                                            const selectedFile = Array.isArray(file) ? file[0] : file;
+                                            if (!(selectedFile instanceof File)) {
+                                                console.warn("Valor inválido recebido no Upload:", selectedFile);
+                                                return;
+                                            }
+
+                                            setUploadedImage(selectedFile);
+                                            const previewUrl = URL.createObjectURL(selectedFile);
+                                            setPreviewImage(previewUrl);
                                         }} />
                                         <div className="flex justify-between px-[5%]">
                                             <Button

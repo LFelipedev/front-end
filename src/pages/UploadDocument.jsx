@@ -7,11 +7,11 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 //import server
-import {getTemplateById} from "../services/api";
+import { getTemplateById } from "../services/api";
 
 function UploadDocument() {
     const { id } = useParams();
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImage, setSelectedImage] = useState([]);
     const [template, setTemplate] = useState(null);
     const [loading, setLoading] = useState(true);
     const [selectedFields, setSelectedFields] = useState([]);
@@ -39,7 +39,7 @@ function UploadDocument() {
     if (!template) {
         return <p className="text-center mt-10 text-red-500">Template não encontrado.</p>;
     }
-    
+
     return (
         <div className="flex flex-col w-full h-full">
             <TitlePage Title="Ver Templates" />
@@ -47,18 +47,30 @@ function UploadDocument() {
             <div className="flex flex-col lg:flex-row w-full h-full p-6 lg:p-10 gap-6">
                 <div className="flex flex-col w-full lg:w-1/2 h-auto lg:h-full justify-between gap-6">
                     <div className="h-[40%]">
-                        <Upload onFileChange={(file) => { file ? setSelectedImage(URL.createObjectURL(file)) : setSelectedImage(null) }} />
+                        <Upload multiple
+                            onFileChange={(file) => {
+                                if (!file) {
+                                    setSelectedImage([]);
+                                    return;
+                                }
+                                const filesArray = Array.isArray(file) ? file : [file];
+                                const previews = filesArray.map(f => URL.createObjectURL(f));
+                                setSelectedImage(previews);
+                            }}
+                        />
                     </div>
                     <div className="">
-                        {selectedImage && (<>
-                            <ViewFields
-                                imageUrl={selectedImage}
-                                template={template}
-                                selectedFields={selectedFields}
-                                hoveredFieldId={hoveredFieldId}
-                                setHoveredFieldId={setHoveredFieldId}
-                            />
-                        </>)}
+                        {selectedImage.length > 0 &&
+                            selectedImage.map((image) => (
+                                <ViewFields
+                                    key={image}
+                                    imageUrl={image}
+                                    template={template}
+                                    selectedFields={selectedFields}
+                                    hoveredFieldId={hoveredFieldId}
+                                    setHoveredFieldId={setHoveredFieldId}
+                                />
+                            ))}
                     </div>
                 </div>
 

@@ -28,20 +28,16 @@ function ViewFields({
     const naturalW = img.naturalWidth || 0;
     const naturalH = img.naturalHeight || 0;
     const rect = img.getBoundingClientRect();
-
-    // rect.width/height representam o tamanho exibido da imagem (object-contain)
     setNaturalSize({ w: naturalW, h: naturalH });
     setDisplaySize({ w: Math.round(rect.width), h: Math.round(rect.height) });
   };
 
   useEffect(() => {
-    // recalc quando redimensionar a janela
     window.addEventListener("resize", updateImageSizes);
     return () => window.removeEventListener("resize", updateImageSizes);
   }, []);
 
   useEffect(() => {
-    // quando a imagem muda, recalc (pequeno atraso para garantir layout)
     const t = setTimeout(updateImageSizes, 50);
     return () => clearTimeout(t);
   }, [imageUrl]);
@@ -51,7 +47,7 @@ function ViewFields({
   };
 
   return (
-    <div className="bg-white rounded-md shadow-lg p-4 flex flex-col gap-1">
+    <div className="bg-white rounded-md shadow-lg p-4 flex flex-col gap-1 mb-2">
       <h2 className="text-xl font-bold">{template?.name || "Nome do Template"}</h2>
 
       <div
@@ -68,7 +64,6 @@ function ViewFields({
             draggable={false}
           />
 
-          {/* Overlay com mesmo tamanho da imagem exibida */}
           {displaySize.w > 0 && displaySize.h > 0 && (
             <div
               className="absolute top-0 left-0"
