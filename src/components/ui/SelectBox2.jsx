@@ -82,8 +82,9 @@ function SelectBox2({
                 </ul>
             )}
 
-            <div className="mt-auto flex justify-end">
+            <div className="mt-auto flex justify-end gap-x-1">
                 <Button text="Voltar" variant="secondary" onClick={() => {navigate("/");}} />
+                <Button text="Avançar"/>
             </div>
         </div>
     );
