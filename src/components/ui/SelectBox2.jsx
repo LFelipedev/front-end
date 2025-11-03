@@ -8,7 +8,7 @@ import {getTemplateById} from "../../services/api";
 
 
 function SelectBox2({
-    prevStep,
+    setExportStep,
     templateId,
     selectedFields,
     setSelectedFields,
@@ -84,7 +84,7 @@ function SelectBox2({
 
             <div className="mt-auto flex justify-end gap-x-1">
                 <Button text="Voltar" variant="secondary" onClick={() => {navigate("/");}} />
-                <Button text="Avançar"/>
+                <Button text="Avançar" onClick={()=> setExportStep(1)}/>
             </div>
         </div>
     );

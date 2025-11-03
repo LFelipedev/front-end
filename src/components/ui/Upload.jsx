@@ -3,15 +3,12 @@ import { InboxOutlined, DeleteOutlined } from '@ant-design/icons';
 import { FiUploadCloud } from "react-icons/fi";
 import { message } from 'antd';
 
-function Upload({ onFileChange, multiple = false }) {
+function Upload({ onFileChange, multiple = false, files, setFiles, fileUrls, setFileUrls }) {
     const [UploadBig, setUploadBig] = useState(true);
-    const [files, setFiles] = useState([]);
-    const [fileUrls, setFileUrls] = useState([]);
 
-    // limpa os objectURLs quando o componente é desmontado
     useEffect(() => {
-        return () => fileUrls.forEach(url => URL.revokeObjectURL(url));
-    }, [fileUrls]);
+        setUploadBig(files.length === 0);
+    }, [files]);
 
     const handleFileChange = (event) => {
         const selectedFiles = Array.from(event.target.files);
@@ -25,22 +22,23 @@ function Upload({ onFileChange, multiple = false }) {
         if (validFiles.length === 0) return;
 
         const urls = validFiles.map(file => URL.createObjectURL(file));
+        const newFiles = multiple ? [...files, ...validFiles] : validFiles;
+        const newUrls = multiple ? [...fileUrls, ...urls] : urls;
 
-        setFiles(validFiles);
-        setFileUrls(urls);
+        setFiles(newFiles);
+        setFileUrls(newUrls);
         setUploadBig(false);
 
         if (onFileChange) {
-            onFileChange(multiple ? validFiles : validFiles[0]);
+            onFileChange(newUrls);
         }
     };
 
     const handleRemoveFile = (index) => {
         URL.revokeObjectURL(fileUrls[index]);
-
+        
         const updatedFiles = files.filter((_, i) => i !== index);
         const updatedUrls = fileUrls.filter((_, i) => i !== index);
-
         setFiles(updatedFiles);
         setFileUrls(updatedUrls);
 
@@ -48,7 +46,7 @@ function Upload({ onFileChange, multiple = false }) {
             setUploadBig(true);
             if (onFileChange) onFileChange(null);
         } else if (onFileChange) {
-            onFileChange(multiple ? updatedFiles : updatedFiles[0]);
+            onFileChange(updatedUrls);
         }
     };
 
