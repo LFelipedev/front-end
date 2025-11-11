@@ -3,7 +3,7 @@ import { InboxOutlined, DeleteOutlined } from '@ant-design/icons';
 import { FiUploadCloud } from "react-icons/fi";
 import { message } from 'antd';
 
-function Upload({ onFileChange, multiple = false, files, setFiles, fileUrls, setFileUrls }) {
+function Upload({ onFileChange, multiple = false, files = [], setFiles, fileUrls = [], setFileUrls }) {
     const [UploadBig, setUploadBig] = useState(true);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ function Upload({ onFileChange, multiple = false, files, setFiles, fileUrls, set
         setUploadBig(false);
 
         if (onFileChange) {
-            onFileChange(newUrls);
+            onFileChange(multiple ? newFiles : newFiles[0]);
         }
     };
 

@@ -20,6 +20,8 @@ function Create() {
     const [uploadedImage, setUploadedImage] = useState(null);
     const [allCoordinates, setAllCoordinates] = useState([]);
     const [previewImage, setPreviewImage] = useState(null);
+    const [files, setFiles] = useState([]);
+    const [fileUrls, setFileUrls] = useState([]);
     const [coordinates, setCoordinates] = useState({
         x: 0,
         y: 0,
@@ -118,22 +120,27 @@ function Create() {
                             <div className="flex flex-col w-full h-full bg-gray-100">
                                 <div className="w-full">
                                     <div className="flex flex-col gap-y-1">
-                                        <Upload onFileChange={(file) => {
-                                            if (!file) {
-                                                setUploadedImage(null);
-                                                setPreviewImage(null);
-                                                return;
-                                            }
-                                            const selectedFile = Array.isArray(file) ? file[0] : file;
-                                            if (!(selectedFile instanceof File)) {
-                                                console.warn("Valor inválido recebido no Upload:", selectedFile);
-                                                return;
-                                            }
+                                        <Upload
+                                            files={files}
+                                            setFiles={setFiles}
+                                            fileUrls={fileUrls}
+                                            setFileUrls={setFileUrls}
+                                            onFileChange={(file) => {
+                                                if (!file) {
+                                                    setUploadedImage(null);
+                                                    setPreviewImage(null);
+                                                    return;
+                                                }
+                                                const selectedFile = Array.isArray(file) ? file[0] : file;
+                                                if (!(selectedFile instanceof File)) {
+                                                    console.warn("Valor inválido recebido no Upload:", selectedFile);
+                                                    return;
+                                                }
 
-                                            setUploadedImage(selectedFile);
-                                            const previewUrl = URL.createObjectURL(selectedFile);
-                                            setPreviewImage(previewUrl);
-                                        }} />
+                                                setUploadedImage(selectedFile);
+                                                const previewUrl = URL.createObjectURL(selectedFile);
+                                                setPreviewImage(previewUrl);
+                                            }} />
                                         <div className="flex justify-between px-[5%]">
                                             <Button
                                                 text="Voltar" variant="secondary" onClick={prevStep}
