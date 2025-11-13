@@ -42,7 +42,7 @@ function Template({ cardsOnly = false, onOpenDeleteModal }) {
         return <p className="text-center mt-10 text-gray-500">Nenhum template encontrado.</p>;
     }
 
-    const cards = templates.map((template) => (
+    const cards = Array.isArray(templates) && templates.map((template) => (
         <div
             key={template.id}
             className="w-full sm:w-[40vh] h-[40vh] flex flex-col items-center justify-start border-2 border-[#602E31] rounded-lg bg-white hover:shadow-md transition-all duration-200"
