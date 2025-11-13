@@ -1,14 +1,8 @@
 import axios from "axios";
-const url = import.meta.env.VITE_API_URL || 'https://interclerical-felicitas-extendable.ngrok-free.dev/templates';
-
-/*export async function getTemplate() {
-    const response = await axios.get(`${url}/templates`);
-    return response.data;
-}
-*/
+const url = import.meta.env.VITE_API_URL || 'https://interclerical-felicitas-extendable.ngrok-free.dev';
 
 export async function getTemplate() {
-    const response = await axios.get('https://interclerical-felicitas-extendable.ngrok-free.dev/templates');
+    const response = await axios.get(`${'http://localhost:3000'}/templates`);
     return response.data;
 }
 
