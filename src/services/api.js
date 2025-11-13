@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = import.meta.env.VITE_API_URL || 'https://interclerical-felicitas-extendable.ngrok-free.dev';
+const url = 'https://interclerical-felicitas-extendable.ngrok-free.dev';
 
 export async function getTemplate() {
     const response = await axios.get(`${url}/templates`);
