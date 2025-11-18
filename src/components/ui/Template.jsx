@@ -10,6 +10,7 @@ import { getTemplate } from "../../services/api";
 function Template({ cardsOnly = false, onOpenDeleteModal }) {
     const [templates, setTemplates] = useState([]);
     const [loading, setLoading] = useState(true);
+    const API_URL = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchTemplates = async () => {
@@ -41,6 +42,7 @@ function Template({ cardsOnly = false, onOpenDeleteModal }) {
     if (!templates || templates.length === 0) {
         return <p className="text-center mt-10 text-gray-500">Nenhum template encontrado.</p>;
     }
+    console.log(API_URL);
 
     const cards = Array.isArray(templates) && templates.map((template) => (
         <div
@@ -49,7 +51,7 @@ function Template({ cardsOnly = false, onOpenDeleteModal }) {
         >
             <div className="h-[45%] w-full rounded-t-md overflow-hidden">
                 <img
-                    src={template.imagePath ? `http://localhost:3000/uploads/${template.imagePath}` : l1img}
+                    src={template.imagePath ? `${API_URL}/uploads/${template.imagePath}` : l1img}
                     alt={template.name}
                     className="w-full h-full object-cover"
                 />
